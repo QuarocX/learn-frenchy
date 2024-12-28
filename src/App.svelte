@@ -5,6 +5,7 @@
   import FlashCard from "./components/FlashCard.svelte";
   import AccountView from "./components/AccountView.svelte";
   import NavigationBar from "./components/NavigationBar.svelte";
+  import ViewTransition from "./components/ViewTransition.svelte";
 
   let units = [];
   let error = null;
@@ -56,46 +57,52 @@
 </script>
 
 {#if currentView === "start"}
-  <main>
-    <div class="header">
-      <h1>Learn Frenchy</h1>
-      <button class="theme-toggle" on:click={() => (darkMode = !darkMode)}>
-        {darkMode ? "☀️" : "🌙"}
-      </button>
-    </div>
-
-    <section class="quick-access">
-      <h2>Quick Access</h2>
-      <div class="quick-links">
-        <button class="flashcard-link" on:click={openFlashcards}>
-          📝 Practice Flashcards
+  <ViewTransition key="start">
+    <main>
+      <div class="header">
+        <h1>Learn Frenchy</h1>
+        <button class="theme-toggle" on:click={() => (darkMode = !darkMode)}>
+          {darkMode ? "☀️" : "🌙"}
         </button>
       </div>
-    </section>
 
-    <section>
-      <h2>French Units</h2>
-      <ul>
-        {#if error}
-          <li class="error">Error: {error}</li>
-        {:else if units.length > 0}
-          {#each units as unit}
-            <ActivityCard {unit} onClick={handleUnitClick} />
-          {/each}
-        {:else}
-          <li>Loading activities...</li>
-        {/if}
-      </ul>
-    </section>
-  </main>
+      <section class="quick-access">
+        <h2>Quick Access</h2>
+        <div class="quick-links">
+          <button class="flashcard-link" on:click={openFlashcards}>
+            📝 Practice Flashcards
+          </button>
+        </div>
+      </section>
 
-  {#if selectedUnit}
-    <UnitDetails unit={selectedUnit} onClose={closeUnitDetails} />
-  {/if}
+      <section>
+        <h2>French Units</h2>
+        <ul>
+          {#if error}
+            <li class="error">Error: {error}</li>
+          {:else if units.length > 0}
+            {#each units as unit}
+              <ActivityCard {unit} onClick={handleUnitClick} />
+            {/each}
+          {:else}
+            <li>Loading activities...</li>
+          {/if}
+        </ul>
+      </section>
+    </main>
+
+    {#if selectedUnit}
+      <UnitDetails unit={selectedUnit} onClose={closeUnitDetails} />
+    {/if}
+  </ViewTransition>
 {:else if currentView === "activity"}
-  <FlashCard />
+  <ViewTransition key="activity">
+    <FlashCard />
+  </ViewTransition>
 {:else if currentView === "account"}
-  <AccountView />
+  <ViewTransition key="account">
+    <AccountView />
+  </ViewTransition>
 {/if}
 
 <NavigationBar {currentView} onNavigate={handleNavigation} />

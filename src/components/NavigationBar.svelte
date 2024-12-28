@@ -49,11 +49,30 @@
     flex-direction: column;
     align-items: center;
     gap: 0.3rem;
-    transition: color 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  button::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #4a90e2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
   }
 
   button.active {
     color: #4a90e2;
+    transform: translateY(-2px);
+  }
+
+  button.active::after {
+    width: 30px;
   }
 
   :global(body.dark-mode) .nav-bar {

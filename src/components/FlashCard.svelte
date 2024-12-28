@@ -63,25 +63,25 @@
   </div>
 
   <div class="flashcard-container">
-    <div class="progress">
-      Card {currentCardIndex + 1} of {flashcards.length}
+    <div class="progress-and-controls">
+      <div class="progress">
+        Card {currentCardIndex + 1} of {flashcards.length}
+      </div>
+      <div class="controls">
+        <button class="nav-button prev" on:click={previousCard}>←</button>
+        <button class="nav-button next" on:click={nextCard}>→</button>
+      </div>
     </div>
 
-    <div class="card-and-controls">
-      <button class="nav-button prev" on:click={previousCard}>←</button>
-
-      <div class="flashcard {isFlipped ? 'flipped' : ''}" on:click={flipCard}>
-        <div class="card-front">
-          <h3>{flashcards[currentCardIndex].french}</h3>
-          <p class="example">{flashcards[currentCardIndex].example}</p>
-        </div>
-        <div class="card-back">
-          <h3>{flashcards[currentCardIndex].english}</h3>
-          <p class="tip">Practice saying the French version!</p>
-        </div>
+    <div class="flashcard {isFlipped ? 'flipped' : ''}" on:click={flipCard}>
+      <div class="card-front">
+        <h3>{flashcards[currentCardIndex].french}</h3>
+        <p class="example">{flashcards[currentCardIndex].example}</p>
       </div>
-
-      <button class="nav-button next" on:click={nextCard}>→</button>
+      <div class="card-back">
+        <h3>{flashcards[currentCardIndex].english}</h3>
+        <p class="tip">Practice saying the French version!</p>
+      </div>
     </div>
   </div>
 </div>
@@ -90,7 +90,7 @@
   .activity-view {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 2rem 5rem 2rem;
   }
 
   header {
@@ -118,43 +118,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    width: 100%;
+    margin: 2rem 0;
   }
 
-  .progress {
-    font-size: 1.1rem;
-    color: #666;
-  }
-
-  .card-and-controls {
+  .progress-and-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    justify-content: space-between;
     width: 100%;
-    position: relative;
+    max-width: 500px;
+    margin-bottom: 1rem;
+  }
+
+  .controls {
+    display: flex;
+    gap: 1rem;
   }
 
   .nav-button {
-    padding: 1rem 1.5rem;
+    padding: 0.8rem;
     border: none;
     border-radius: 50%;
     background: #4a90e2;
     color: white;
     cursor: pointer;
     transition: all 0.3s;
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
   }
 
   .nav-button:hover {
     background: #357abd;
-    transform: translateY(-2px);
+    transform: scale(1.1);
   }
 
   :global(body.dark-mode) .nav-button {
@@ -171,7 +171,6 @@
     height: 300px;
     perspective: 1000px;
     cursor: pointer;
-    position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
   }
@@ -229,5 +228,23 @@
   .tip {
     font-size: 1.1rem;
     margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .activity-view {
+      padding: 1rem;
+      padding-bottom: 5rem;
+    }
+
+    .progress-and-controls {
+      padding: 0 1rem;
+    }
+
+    .nav-button {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
   }
 </style>
