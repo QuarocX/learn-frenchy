@@ -27,7 +27,7 @@ jobs:
         with:
           switches: -avrh --delete
           path: dist/  # Ensure this points to the output directory of your build
-          remote_path: /var/www/virtual/future4/energy.gregorion.net
+          remote_path: /var/www/virtual/future4/french.gregorion.net
           remote_host: ${{ vars.SSH_HOST }}
           remote_user: ${{ vars.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
