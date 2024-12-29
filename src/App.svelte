@@ -35,7 +35,12 @@
   onMount(async () => {
     try {
       console.log("Fetching data...");
-      const response = await fetch("http://localhost:3000/french-class");
+      // import.meta.env.PROD is a Vite environment variable that is:
+      // - false during development (npm run dev)
+      // - true during production (npm run build)
+      const API_URL = `${import.meta.env.VITE_API_URL}/public/french-class`;
+      console.log("API_URL:", API_URL);
+      const response = await fetch(API_URL);
       console.log("Response:", response);
 
       if (!response.ok) {
