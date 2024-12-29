@@ -39,7 +39,6 @@
       // - false during development (npm run dev)
       // - true during production (npm run build)
       const API_URL = `${import.meta.env.VITE_API_URL}/french-class`;
-      console.log("API_URL:", API_URL);
       const response = await fetch(API_URL);
       console.log("Response:", response);
 
