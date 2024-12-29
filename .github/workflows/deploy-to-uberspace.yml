@@ -18,11 +18,7 @@ jobs:
         run: npm install
 
       - name: Build the Svelte app
-        env:
-          VITE_API_URL: https://french-api.gregorion.net
-        run: |
-          echo "Building with VITE_API_URL=$VITE_API_URL"
-          npm run build
+        run: npm run build # This command builds your Svelte app
 
       - name: Deploy using Rsync
         uses: burnett01/rsync-deployments@6.0.0
