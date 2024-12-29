@@ -12,21 +12,23 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Use Node.js 18 or later
-
+          node-version: "18" # Use Node.js 18 or later
 
       - name: Install dependencies
         run: npm install
 
       - name: Build the Svelte app
-        run: npm run build  # This command builds your Svelte app
-
+        env:
+          VITE_API_URL: https://french-api.gregorion.net
+        run: |
+          echo "Building with VITE_API_URL=$VITE_API_URL"
+          npm run build
 
       - name: Deploy using Rsync
         uses: burnett01/rsync-deployments@6.0.0
         with:
           switches: -avrh --delete
-          path: dist/  # Ensure this points to the output directory of your build
+          path: dist/ # Ensure this points to the output directory of your build
           remote_path: /var/www/virtual/future4/french.gregorion.net
           remote_host: ${{ vars.SSH_HOST }}
           remote_user: ${{ vars.SSH_USERNAME }}
