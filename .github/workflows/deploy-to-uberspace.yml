@@ -14,15 +14,15 @@ jobs:
         with:
           node-version: '16'  # Specify the Node.js version you are using
 
+      - name: Test SSH Connection
+        run: ssh -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} 'echo "SSH connection successful!"'
+
       - name: Install dependencies
         run: npm install
 
       - name: Build the Svelte app
         run: npm run build  # This command builds your Svelte app
 
-
-      - name: Test SSH Connection
-        run: ssh -i ~/.ssh/id_rsa ${{ vars.SSH_USERNAME }}@${{ vars.SSH_HOST }} 'echo "SSH connection successful!"'
 
       - name: Deploy using Rsync
         uses: burnett01/rsync-deployments@6.0.0
