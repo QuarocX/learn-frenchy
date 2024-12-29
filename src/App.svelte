@@ -39,10 +39,11 @@
       // - false during development (npm run dev)
       // - true during production (npm run build)
       // const API_URL = `${import.meta.env.VITE_API_URL}/french-class`;
-      const API_URL = "http://localhost:3000/french-class";
-      console.log("API_URL:", API_URL);
-      const response = await fetch(API_URL);
-      console.log("Response:", response);
+      // // const API_URL = "http://localhost:3000/french-class";
+      // console.log("API_URL:", API_URL);
+      // const response = await fetch(API_URL);
+      // console.log("Response:", response);
+      const response = await fetch("http://localhost:3000/french-class");
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
