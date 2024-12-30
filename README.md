@@ -21,7 +21,7 @@ Learn Frenchy is a simple and interactive web application designed to help users
 To run Learn Frenchy locally, follow these steps:
 
 1. **Clone the Repository**:
-git clone https://github.com/yourusername/learn-frenchy.git
+git clone https://github.com/quarocx/learn-frenchy.git
 cd learn-frenchy
 text
 
