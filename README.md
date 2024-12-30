@@ -2,7 +2,8 @@
 
 Learn Frenchy is a simple and interactive web application designed to help users learn French through various activities, including flashcards and unit details. 
 
-![start page with overview of lectures](frenchy-startpage.png)
+<img src="frenchy-startpage.png" alt="start page with overview of lectures" width="300">
+
 
 
 ## Features 🌟
@@ -11,7 +12,8 @@ Learn Frenchy is a simple and interactive web application designed to help users
 - **Quick Access**: Easily navigate to flashcard practice. 📝
 - **Unit Details**: View detailed information about different learning units. 📚
 
-![vocabulary list](frenchy-daily-french-voc-list.png)
+<img src="frenchy-daily-french-voc-list.png" alt="start page with overview of lectures" width="300">
+
 
 
 ## Installation ⚙️
